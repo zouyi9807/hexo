@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://zouyi9807.github.io/"/>
-  <updated>2019-09-23T11:44:38.612Z</updated>
+  <updated>2019-10-12T15:51:39.549Z</updated>
   <id>https://zouyi9807.github.io/</id>
   
   <author>
@@ -17,11 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Desktop icons don&#39;t appear</title>
+    <link href="https://zouyi9807.github.io/2019/10/12/Desktop-icons-don-t-appear/"/>
+    <id>https://zouyi9807.github.io/2019/10/12/Desktop-icons-don-t-appear/</id>
+    <published>2019-10-12T14:59:22.000Z</published>
+    <updated>2019-10-12T15:51:39.549Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Debian-10-无桌面图标"><a href="#Debian-10-无桌面图标" class="headerlink" title="Debian 10 无桌面图标"></a>Debian 10 无桌面图标</h3><p>环境如下:<br>OS : Debian 10<br>GNOME : 3.30.2</p><h4 id="Debian-10-刚安装完后是这样的，未显示桌面图标："><a href="#Debian-10-刚安装完后是这样的，未显示桌面图标：" class="headerlink" title="Debian 10 刚安装完后是这样的，未显示桌面图标："></a>Debian 10 刚安装完后是这样的，未显示桌面图标：<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/zouyi9807/images/master/debian-10.png?token=AG745O5UBKDAN3E7OL4DC6C5VMQ4O" alt="debian-10.png" title>                </div>                <div class="image-caption">debian-10.png</div>            </figure></h4><p>最终在这篇文章中找到了原因：<a href="https://www.omgubuntu.co.uk/2018/01/gnome-desktop-icons-removed-3-28" target="_blank" rel="noopener">原文链接</a></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/zouyi9807/images/master/No-desktop-icons.png?token=AG745O3LFIBRCTSUSSW2IO25VMTJI" alt="No-desktop-icons.png" title>                </div>                <div class="image-caption">No-desktop-icons.png</div>            </figure><p>具体原因为，之前 GNOME 的 Desktop 是由 Nautilus 管理的，而现在开发者不维护了。<br>在 YouTube 上找到了解决方案：<a href="https://www.youtube.com/watch?v=twt9ZYQU8ys" target="_blank" rel="noopener">视频链接</a><br>可以通过<a href="https://extensions.gnome.org/extension/6/applications-menu" target="_blank" rel="noopener"> Firefox 插件</a><br>来解决，如下图：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/zouyi9807/images/master/Applications-Menu.png?token=AG745O4GB2K5JKGSEXBFFOC5VMWYE" alt="Applications-Menu.png" title>                </div>                <div class="image-caption">Applications-Menu.png</div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/zouyi9807/images/master/Debian-10.png?token=AG745O3GQD3JEAWJDKLGSB25VMWXK" alt="Debian-10.png" title>                </div>                <div class="image-caption">Debian-10.png</div>            </figure><iframe height="498" width="510" src="https://www.youtube.com/watch?v=twt9ZYQU8ys" frameborder="0" allowfullscreen></iframe>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;Debian-10-无桌面图标&quot;&gt;&lt;a href=&quot;#Debian-10-无桌面图标&quot; class=&quot;headerlink&quot; title=&quot;Debian 10 无桌面图标&quot;&gt;&lt;/a&gt;Debian 10 无桌面图标&lt;/h3&gt;&lt;p&gt;环境如下:&lt;br&gt;OS : Debi
+      
+    
+    </summary>
+    
+    
+    
+      <category term="Linux" scheme="https://zouyi9807.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="https://zouyi9807.github.io/2019/09/23/hello-world/"/>
     <id>https://zouyi9807.github.io/2019/09/23/hello-world/</id>
-    <published>2019-09-23T11:44:38.612Z</published>
-    <updated>2019-09-23T11:44:38.612Z</updated>
+    <published>2019-09-23T12:44:22.492Z</published>
+    <updated>2019-09-23T12:44:22.492Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
     
