@@ -494,10 +494,10 @@ MathJax.Hub.Queue(function() {
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '';
+            document.title = 'Zou Yi's Blog';
             clearTimeout(titleTime);
         } else {
-            document.title = '';
+            document.title = '(つェ⊂)Welcome!';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

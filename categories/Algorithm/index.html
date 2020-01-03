@@ -160,6 +160,10 @@
             <a href="/categories/Algorithm/" style="-webkit-order:0;order:0" class="tags-list-item waves-effect waves-button waves-light active">Algorithm</a>
 
         
+
+            <a href="/categories/Paper/" style="-webkit-order:1;order:1" class="tags-list-item waves-effect waves-button waves-light">Paper</a>
+
+        
     </nav>
     <!-- PC show more-->
     <div class="tags-list-more">
@@ -362,10 +366,10 @@ MathJax.Hub.Queue(function() {
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '';
+            document.title = 'Zou Yi's Blog';
             clearTimeout(titleTime);
         } else {
-            document.title = '';
+            document.title = '(つェ⊂)Welcome!';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

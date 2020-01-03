@@ -169,6 +169,8 @@
         <time class="post-time" title="2020-01-03 22:08:22" datetime="2020-01-03T14:08:22.000Z"  itemprop="datePublished">2020-01-03</time>
 
         
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Paper/">Paper</a></li></ul>
+
 
 
     </div>
@@ -188,12 +190,45 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        
+        符号
+收录一些常用的数学符号的LaTeX，方便日常使用（持续更新……）
+
+希腊字母
+
+
+希腊字母小写、大写
+LaTeX
+希腊字母小写、大写
+LaTeX
+
+
+
+$\alpha\ A$
+\alpha A
+$\nu\ N$
+\nu N
+
+
+$\beta\ B$
+\beta B
+$\xi\ \Xi$
+\xi \Xi
+
+
+$\gamma\ \Gamma$
+\gamma \Gamma
+$\omicron...
     
 
         <a href="/2020/01/03/常用数学符号/" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LaTeX/">LaTeX</a></li></ul>
+
     </div>
     
 </article>
@@ -375,12 +410,7 @@ MainActivity.java
 
     
         Debian 10 无桌面图标 (PS : 本文嵌入了一段 YouTube 视频，自行科学上网)环境如下:OS : Debian 10GNOME : 3.30.2
-Debian 10 刚安装完后是这样的，未显示桌面图标：
-                
-                    
-                    
-                
-          ...
+Debian 10 刚安装完后是这样的，未显示桌面图标：最终在这篇文章中找到了原因：原文链接具体原因为，之前 GNOME 的 Desktop 是由 Nautilus 管理的，而现在开发者不维护了。在 YouTube 上找到了解决方...
     
 
         <a href="/2019/10/12/Desktop-icons-don-t-appear/" class="post-more waves-effect waves-button">
@@ -591,10 +621,10 @@ MathJax.Hub.Queue(function() {
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = '';
+            document.title = 'Zou Yi's Blog';
             clearTimeout(titleTime);
         } else {
-            document.title = '';
+            document.title = '(つェ⊂)Welcome!';
             titleTime = setTimeout(function() {
                 document.title = OriginTitile;
             },2000);

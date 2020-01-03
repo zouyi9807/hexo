@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://eyum.top/"/>
-  <updated>2020-01-03T14:08:22.876Z</updated>
+  <updated>2020-01-03T15:57:16.985Z</updated>
   <id>https://eyum.top/</id>
   
   <author>
@@ -21,13 +21,27 @@
     <link href="https://eyum.top/2020/01/03/%E5%B8%B8%E7%94%A8%E6%95%B0%E5%AD%A6%E7%AC%A6%E5%8F%B7/"/>
     <id>https://eyum.top/2020/01/03/常用数学符号/</id>
     <published>2020-01-03T14:08:22.000Z</published>
-    <updated>2020-01-03T14:08:22.876Z</updated>
+    <updated>2020-01-03T15:57:16.985Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h3><blockquote><p>收录一些常用的数学符号的LaTeX，方便日常使用（持续更新……）</p></blockquote><h4 id="希腊字母"><a href="#希腊字母" class="headerlink" title="希腊字母"></a>希腊字母</h4><table><thead><tr><th align="center">希腊字母小写、大写</th><th align="center">LaTeX</th><th align="center">希腊字母小写、大写</th><th align="center">LaTeX</th></tr></thead><tbody><tr><td align="center">$\alpha\ A$</td><td align="center">\alpha A</td><td align="center">$\nu\ N$</td><td align="center">\nu N</td></tr><tr><td align="center">$\beta\ B$</td><td align="center">\beta B</td><td align="center">$\xi\ \Xi$</td><td align="center">\xi \Xi</td></tr><tr><td align="center">$\gamma\ \Gamma$</td><td align="center">\gamma \Gamma</td><td align="center">$\omicron\ O$</td><td align="center">\omicron O</td></tr><tr><td align="center">$\delta\ \Delta$</td><td align="center">\delta \Delta</td><td align="center">$\pi\ \Pi$</td><td align="center">\pi \Pi</td></tr><tr><td align="center">$\epsilon\ \varepsilon\ E    $</td><td align="center">\epsilon \varepsilon E</td><td align="center">$\rho\ \varrho\ P$</td><td align="center">\rho \varrho P</td></tr><tr><td align="center">$\zeta\ Z$</td><td align="center">\zeta Z</td><td align="center">$\sigma\ \Sigma$</td><td align="center">\sigma \Sigma</td></tr><tr><td align="center">$\eta\ H    $</td><td align="center">\eta H</td><td align="center">$\tau\ T$</td><td align="center">\tau T</td></tr><tr><td align="center">$\theta\ \vartheta\ \Theta$</td><td align="center">\theta \vartheta \Theta</td><td align="center">$\upsilon\ \Upsilon$</td><td align="center">\upsilon \Upsilon</td></tr><tr><td align="center">$\iota\ I    $</td><td align="center">\iota I</td><td align="center">$\phi\ \varphi\ \Phi$</td><td align="center">\phi \varphi \Phi</td></tr><tr><td align="center">$\kappa\ K$</td><td align="center">\kappa K</td><td align="center">$\chi\ x\ X$</td><td align="center">\chi x X</td></tr><tr><td align="center">$\lambda\ \Lambda$</td><td align="center">\lambda \Lambda</td><td align="center">$\psi\ \Psi$</td><td align="center">\psi \Psi</td></tr><tr><td align="center">$\mu\ M    $</td><td align="center">\mu M</td><td align="center">$\omega\ \Omega$</td><td align="center">\omega \Omega</td></tr></tbody></table><ul><li>注：\mit\Gamma 表斜体 $\mit\Gamma$</li></ul><h4 id="数和数组"><a href="#数和数组" class="headerlink" title="数和数组"></a>数和数组</h4><table><thead><tr><th align="center">符号</th><th align="center">LaTeX</th><th align="center">概念</th><th align="center">符号</th><th align="center">LaTeX</th><th align="center">概念</th></tr></thead><tbody><tr><td align="center">$a$</td><td align="center">a</td><td align="center">标量（整数或实数）</td><td align="center">$e^{(i)}$</td><td align="center">e^{(i)}</td><td align="center">标准基向量[0,…,0,1,0,…,0]，其中索引 $i$ 处值为1</td></tr><tr><td align="center">$\boldsymbol{a}$</td><td align="center">\boldsymbol{a}</td><td align="center">向量</td><td align="center">${\rm diag}(a)$</td><td align="center">{\rm diag}(a)</td><td align="center">对角方阵，其中对角元素由 $a$ 给定</td></tr><tr><td align="center">$A$</td><td align="center">A</td><td align="center">矩阵</td><td align="center">$\rm{a}$</td><td align="center">\rm{a}</td><td align="center">标量随机变量</td></tr><tr><td align="center">$\rm{\textbf{A}}$</td><td align="center">\rm{\textbf{A}}</td><td align="center">张量</td><td align="center">$\textbf{a}$</td><td align="center">\textbf{a}</td><td align="center">向量随机变量</td></tr><tr><td align="center">$I_n$</td><td align="center">I_n</td><td align="center">$n$ 行 $n$ 列的单位矩阵</td><td align="center">$\rm{A}$</td><td align="center">\rm{A}</td><td align="center">矩阵随机变量</td></tr><tr><td align="center">$I$</td><td align="center">I</td><td align="center">维度蕴含于上下文的单位矩阵</td><td align="center"></td><td align="center"></td><td align="center"></td></tr></tbody></table><h4 id="代数"><a href="#代数" class="headerlink" title="代数"></a>代数</h4>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;符号&quot;&gt;&lt;a href=&quot;#符号&quot; class=&quot;headerlink&quot; title=&quot;符号&quot;&gt;&lt;/a&gt;符号&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;收录一些常用的数学符号的LaTeX，方便日常使用（持续更新……）&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id
+      
     
     </summary>
     
     
+      <category term="Paper" scheme="https://eyum.top/categories/Paper/"/>
+    
+    
+      <category term="LaTeX" scheme="https://eyum.top/tags/LaTeX/"/>
     
   </entry>
   
@@ -117,7 +131,7 @@
     <published>2019-10-12T14:59:22.000Z</published>
     <updated>2019-12-22T13:32:56.374Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="Debian-10-无桌面图标-PS-本文嵌入了一段-YouTube-视频，自行科学上网"><a href="#Debian-10-无桌面图标-PS-本文嵌入了一段-YouTube-视频，自行科学上网" class="headerlink" title="Debian 10 无桌面图标 (PS : 本文嵌入了一段 YouTube 视频，自行科学上网)"></a>Debian 10 无桌面图标 (PS : 本文嵌入了一段 YouTube 视频，自行科学上网)</h3><p>环境如下:<br>OS : Debian 10<br>GNOME : 3.30.2</p><h4 id="Debian-10-刚安装完后是这样的，未显示桌面图标："><a href="#Debian-10-刚安装完后是这样的，未显示桌面图标：" class="headerlink" title="Debian 10 刚安装完后是这样的，未显示桌面图标："></a>Debian 10 刚安装完后是这样的，未显示桌面图标：<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://github.com/zouyi9807/images/raw/master/debian-10.png" alt="debian-10.png" title>                </div>                <div class="image-caption">debian-10.png</div>            </figure></h4><p>最终在这篇文章中找到了原因：<a href="https://www.omgubuntu.co.uk/2018/01/gnome-desktop-icons-removed-3-28" target="_blank" rel="noopener">原文链接</a></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://github.com/zouyi9807/images/raw/master/No-desktop-icons.png" alt="No-desktop-icons.png" title>                </div>                <div class="image-caption">No-desktop-icons.png</div>            </figure><p>具体原因为，之前 GNOME 的 Desktop 是由 Nautilus 管理的，而现在开发者不维护了。<br>在 YouTube 上找到了解决方案：<a href="https://www.youtube.com/watch?v=twt9ZYQU8ys" target="_blank" rel="noopener">视频链接</a></p><iframe width="668" height="375.75" src="https://www.youtube.com/embed/twt9ZYQU8ys" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p>可以通过<a href="https://extensions.gnome.org/extension/6/applications-menu" target="_blank" rel="noopener"> Firefox 插件</a><br>来解决，如下图：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://github.com/zouyi9807/images/blob/master/Applications-Menu.png" alt="Applications-Menu.png" title>                </div>                <div class="image-caption">Applications-Menu.png</div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://github.com/zouyi9807/images/raw/master/Debian-10.png" alt="Debian-10.png" title>                </div>                <div class="image-caption">Debian-10.png</div>            </figure>]]></content>
+    <content type="html"><![CDATA[<h3 id="Debian-10-无桌面图标-PS-本文嵌入了一段-YouTube-视频，自行科学上网"><a href="#Debian-10-无桌面图标-PS-本文嵌入了一段-YouTube-视频，自行科学上网" class="headerlink" title="Debian 10 无桌面图标 (PS : 本文嵌入了一段 YouTube 视频，自行科学上网)"></a>Debian 10 无桌面图标 (PS : 本文嵌入了一段 YouTube 视频，自行科学上网)</h3><p>环境如下:<br>OS : Debian 10<br>GNOME : 3.30.2</p><h4 id="Debian-10-刚安装完后是这样的，未显示桌面图标："><a href="#Debian-10-刚安装完后是这样的，未显示桌面图标：" class="headerlink" title="Debian 10 刚安装完后是这样的，未显示桌面图标："></a>Debian 10 刚安装完后是这样的，未显示桌面图标：<img src="https://github.com/zouyi9807/images/raw/master/debian-10.png" alt="debian-10.png"></h4><p>最终在这篇文章中找到了原因：<a href="https://www.omgubuntu.co.uk/2018/01/gnome-desktop-icons-removed-3-28" target="_blank" rel="noopener">原文链接</a><br><img src="https://github.com/zouyi9807/images/raw/master/No-desktop-icons.png" alt="No-desktop-icons.png"><br>具体原因为，之前 GNOME 的 Desktop 是由 Nautilus 管理的，而现在开发者不维护了。<br>在 YouTube 上找到了解决方案：<a href="https://www.youtube.com/watch?v=twt9ZYQU8ys" target="_blank" rel="noopener">视频链接</a></p><iframe width="668" height="375.75" src="https://www.youtube.com/embed/twt9ZYQU8ys" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p>可以通过<a href="https://extensions.gnome.org/extension/6/applications-menu" target="_blank" rel="noopener"> Firefox 插件</a><br>来解决，如下图：<br><img src="https://github.com/zouyi9807/images/blob/master/Applications-Menu.png" alt="Applications-Menu.png"><br><img src="https://github.com/zouyi9807/images/raw/master/Debian-10.png" alt="Debian-10.png"></p>]]></content>
     
     <summary type="html">
     
