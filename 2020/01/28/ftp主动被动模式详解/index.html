@@ -20,15 +20,23 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content>
-    <meta property="og:type" content="article">
+    <meta name="keywords" content="ftp">
+    <meta name="description" content="主动模式FTP 的传输使用的是 TCP 封包协议，FTP 的传输使用的是 TCP 封包协议。 FTP 服务器使用了两个联机，分别是命令信道与数据流通道 (ftp-data) ，这两个联机都需要经过三向交握。                                                                                             主动模式">
+<meta name="keywords" content="ftp">
+<meta property="og:type" content="article">
 <meta property="og:title" content="ftp主动被动模式详解">
 <meta property="og:url" content="https://eyum.top/2020/01/28/ftp主动被动模式详解/index.html">
 <meta property="og:site_name" content="Zou Yi&#39;s Blog">
+<meta property="og:description" content="主动模式FTP 的传输使用的是 TCP 封包协议，FTP 的传输使用的是 TCP 封包协议。 FTP 服务器使用了两个联机，分别是命令信道与数据流通道 (ftp-data) ，这两个联机都需要经过三向交握。                                                                                             主动模式">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-01-28T13:20:33.636Z">
+<meta property="og:image" content="https://eyum.top/2020/01/28/ftp主动被动模式详解/connect_active.gif">
+<meta property="og:image" content="https://eyum.top/2020/01/28/ftp主动被动模式详解/connect_active_nat.gif">
+<meta property="og:image" content="https://eyum.top/2020/01/28/ftp主动被动模式详解/connect_passive.gif">
+<meta property="og:updated_time" content="2020-01-31T13:03:23.946Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ftp主动被动模式详解">
+<meta name="twitter:description" content="主动模式FTP 的传输使用的是 TCP 封包协议，FTP 的传输使用的是 TCP 封包协议。 FTP 服务器使用了两个联机，分别是命令信道与数据流通道 (ftp-data) ，这两个联机都需要经过三向交握。                                                                                             主动模式">
+<meta name="twitter:image" content="https://eyum.top/2020/01/28/ftp主动被动模式详解/connect_active.gif">
     
         <link rel="alternate" type="application/atom+xml" title="Zou Yi&#39;s Blog" href="/atom.xml">
     
@@ -153,6 +161,8 @@
 </time>
 
 
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Software/">Software</a></li></ul>
+
             
         </h5>
     </div>
@@ -165,6 +175,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主动模式"><span class="post-toc-number">1.</span> <span class="post-toc-text">主动模式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#被动模式"><span class="post-toc-number">2.</span> <span class="post-toc-text">被动模式</span></a></li></ol>
+        </nav>
+    </aside>
+
 
 <article id="post-ftp主动被动模式详解"
   class="post-article article-type-post fade" itemprop="blogPost">
@@ -175,6 +192,8 @@
             <time class="post-time" title="2020-01-28 21:20:33" datetime="2020-01-28T13:20:33.000Z"  itemprop="datePublished">2020-01-28</time>
 
             
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Software/">Software</a></li></ul>
+
 
 
             
@@ -185,7 +204,74 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <h3 id="主动模式"><a href="#主动模式" class="headerlink" title="主动模式"></a>主动模式</h3><p>FTP 的传输使用的是 TCP 封包协议，FTP 的传输使用的是 TCP 封包协议。 FTP 服务器使用了两个联机，分别是命令信道与数据流通道 (ftp-data) ，这两个联机都需要经过三向交握。<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="connect_active.gif" alt="主动模式" title>
+                </div>
+                <div class="image-caption">主动模式</div>
+            </figure><br>简单的联机流程就如上图所示，至于联机的步骤是这样的：</p>
+<ol>
+<li><p>建立命令通道的联机 如上图所示，客户端会随机取一个大于 1024 以上的端口 (port AA) 来与 FTP 服务器端的 port 21 达成联机， 这个过程当然需要三向交握了！达成联机后客户端便可以透过这个联机来对 FTP 服务器下达指令， 包括查询档名、下载、上传等等指令都是利用这个通道来下达的；</p>
+</li>
+<li><p>通知 FTP 服务器端使用 active 且告知连接的埠号 FTP 服务器的 21 埠号主要用在命令的下达，但是当牵涉到数据流时，就不是使用这个联机了。 客户端在需要数据的情况下，会告知服务器端要用什么方式来联机，如果是主动式 (active) 联机时， 客户端会先随机启用一个端口 (图 21.1-1 当中的 port BB) ，且透过命令通道告知 FTP 服务器这两个信息，并等待 FTP 服务器的联机；</p>
+</li>
+<li><p>FTP 服务器『主动』向客户端联机 FTP 服务器由命令通道了解客户端的需求后，会主动的由 20 这个埠号向客户端的 port BB 联机， 这个联机当然也会经过三向交握啦！此时 FTP 的客户端与服务器端共会建立两条联机，分别用在命令的下达与数据的传递。 而预设 FTP 服务器端使用的主动联机埠号就是 port 20 。</p>
+</li>
+</ol>
+<p>如此一来则成功的建立起『命令』与『数据传输』两个信道。<br>同时 FTP 服务器端会使用到的端口号主要有以下两个：</p>
+<ul>
+<li>命令通道的 ftp (默认为 port 21) 与</li>
+<li>数据传输的 ftp-data (默认为port 20)</li>
+</ul>
+<p>另外，很多的局域网络都会使用防火墙 (iptables) 的 NAT 功能，那么上图将变为如下所示：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="connect_active_nat.gif" alt="主动模式_NAT" title>
+                </div>
+                <div class="image-caption">主动模式_NAT</div>
+            </figure><br>其联机的步骤是这样的：</p>
+<ol>
+<li><p>用户与服务器间命令信道的建立： 因为 NAT 会主动的记录由内部送往外部的联机信息，而由于命令信道的建立是由客户端向服务器端联机的， 因此这一条联机可以顺利的建立起来的；</p>
+</li>
+<li><p>用户与服务器间数据信道建立时的通知： 同样的，客户端主机会先启用 port BB ，并透过命令通道告知 FTP 服务器，且等待服务器端的主动联机；</p>
+</li>
+<li><p>服务器主动连到 NAT 等待转递至客户端的联机问题： 但是由于透过 NAT 的转换后，FTP 服务器只能得知 NAT 的 IP 而不是客户端的 IP ， 因此 FTP 服务器会以 port 20 主动的向 NAT 的 port BB 发送主动联机的要求。 但你的 NAT 并没有启动 port BB 来监听 FTP 服务器的联机。</p>
+</li>
+</ol>
+<p>由此可见，在 FTP 的主动式联机当中，NAT 将会被视为客户端，但 NAT 其实并非客户端， 这就造成问题了。如果你曾经在 IP 分享器后面连接某些 FTP 服务器时，可能偶尔会发现明明就连接上 FTP 服务器了 (命令通道已建立)，但是就是无法取得文件名的列表，而是在超过一段时间后显示『 Can’t build data connection: Connection refused，无法进行数据传输』之类的讯息， 那肯定就是这个原因所造成的困扰了。</p>
+<p>那有没有办法可以克服这个问题呢？难道真的在 Linux NAT 后面就一定无法使用 FTP 吗？当然不是！ 目前有两个简易的方法可以克服这个问题：</p>
+<ul>
+<li><p>使用 iptables 所提供的 FTP 侦测模块：</p>
+<p>其实 iptables 早就提供了许多好用的模块了，这个 FTP 当然不会被错过！ 你可以使用 modprobe 这个指令来加载 ipconntrack_ftp 及 ip_nat_ftp 等模块，这几个模块会主动的分析『目标是 port 21 的联机』信息， 所以可以得到 port BB 的资料，此时若接受到 FTP 服务器的主动联机，就能够将该封包导向正确的后端主机了！ ^^</p>
+<p>不过，如果你链接的目标 FTP 服务器他的命令通道默认端口号并非标准的 21 埠号时 (例如某些地下 FTP 服务器)， 那么这两个模块就无法顺利解析出来了，这样说，理解吗？</p>
+</li>
+<li><p>客户端选择被动式 (Passive) 联机模式：</p>
+<p>除了主动式联机之外，FTP 还提供一种称为被动式联机的模式，什么是被动式呢？ 既然主动式是由服务器向客户端联机，反过来讲，被动式就是由客户端向服务器端发起联机的啰！ 既然是由客户端发起联机的，那自然就不需要考虑来自 port 20 的联机啦！关于被动式联机模式将在以下介绍。</p>
+</li>
+</ul>
+<h3 id="被动模式"><a href="#被动模式" class="headerlink" title="被动模式"></a>被动模式</h3><p>同样，我们可以使用底下的图示来作个简略的介绍：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="connect_passive.gif" alt="被动模式" title>
+                </div>
+                <div class="image-caption">被动模式</div>
+            </figure></p>
+<p>其数据流联机流程如下：</p>
+<ol>
+<li><p>用户与服务器建立命令信道： 同样的需要建立命令通道，透过三向交握就可以建立起这个通道了。</p>
+</li>
+<li><p>客户端发出 PASV 的联机要求： 当有使用数据信道的指令时，客户端可透过命令通道发出 PASV 的被动式联机要求 (Passive 的缩写)， 并等待服务器的回应；</p>
+</li>
+<li><p>FTP 服务器启动数据端口，并通知客户端联机： 如果你的 FTP 服务器是能够处理被动式联机的，此时 FTP 服务器会先启动一个端口在监听。 这个端口号码可能是随机的，也可以自定义某一范围的端口，端看你的 FTP 服务器软件而定。 然后你的 FTP 服务器会透过命令通道告知客户端该已经启动的端口 (图中的 port PASV)， 并等待客户端的联机。</p>
+</li>
+<li><p>客户端随机取用大于 1024 的端口号进行连接： 然后你的客户端会随机取用一个大于 1024 的端口号来对主机的 port PASV 联机。 如果一切都顺利的话，那么你的 FTP 数据就可以透过 port BB 及 port PASV 来传送了。</p>
+</li>
+</ol>
+<blockquote>
+<p>PS: 本文来源于鸟哥的Linux私房菜</p>
+</blockquote>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -193,7 +279,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-01-28T13:20:33.636Z" itemprop="dateUpdated">2020-01-28 21:20:33</time>
+    Last updated: <time datetime="2020-01-31T13:03:23.946Z" itemprop="dateUpdated">2020-01-31 21:03:23</time>
 </span><br>
 
 
@@ -215,6 +301,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ftp/">ftp</a></li></ul>
+
 
             
 <div class="page-share-wrap">
