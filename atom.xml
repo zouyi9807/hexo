@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://eyum.top/"/>
-  <updated>2020-01-31T13:03:23.946Z</updated>
+  <updated>2020-02-26T14:59:35.414Z</updated>
   <id>https://eyum.top/</id>
   
   <author>
@@ -15,6 +15,87 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MongoDB强制密码登录</title>
+    <link href="https://eyum.top/2020/02/26/MongoDB%E5%BC%BA%E5%88%B6%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/"/>
+    <id>https://eyum.top/2020/02/26/MongoDB强制密码登录/</id>
+    <published>2020-02-26T12:23:45.000Z</published>
+    <updated>2020-02-26T14:59:35.414Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 <code>RECOVERY</code> 的 <code>Collections</code>，还贴心的留下了个Email：<a href="mailto:varsovie@tutanota.com" target="_blank" rel="noopener">varsovie@tutanota.com</a> 来寻求帮助，真好。<br>=͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)  </p><p><img src="shell.png" alt="shell">  </p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="navicat.png" alt="navicat" title>                </div>                <div class="image-caption">navicat</div>            </figure>  <p>搜了一下这个邮箱，还真有不少，找了一篇相似的：<a href="https://juejin.im/post/5dd2c632e51d453fe773f0b4" target="_blank" rel="noopener">【掘金】</a><br>原因是MongoDB默认直接连接，无须身份认证，而对方很可能仅仅是尝试各个IP的27017端口<br>还好我数据库内没什么非常重要的文件，不过这次也给我提了个醒</p><ul><li>尽量不要用默认端口（MongoDB为27017）</li><li>必要的话限制IP登录（<code>/etc/mongod.conf</code> 文件内 <code>bindIp</code>）</li><li>创建相应的管理员账户</li><li>强制要求密码登录</li><li>养成定时备份的习惯</li></ul><h3 id="创建相应的管理员账户"><a href="#创建相应的管理员账户" class="headerlink" title="创建相应的管理员账户"></a>创建相应的管理员账户</h3><p>MongoDB中拥有不同权限的账号，具体可以查看：<a href="https://docs.mongodb.com/manual/reference/built-in-roles/" target="_blank" rel="noopener">【官方文档】</a><br>其中常用的如下：</p><ul><li>数据库普通用户角色<ul><li>read</li><li>readWrite</li></ul></li><li>数据库管理员角色<ul><li>dbAdmin</li><li>dbOwner</li><li>userAdmin</li></ul></li><li>集群管理角色<ul><li>clusterAdmin</li><li>clusterManager</li><li>clusterMonitor</li><li>hostManager</li></ul></li><li>备份与还原角色<ul><li>backup</li><li>restore</li></ul></li><li>所有数据库角色（对所有数据库有效）<ul><li>readAnyDatabase</li><li>readWriteAnyDatabase</li><li>userAdminAnyDatabase</li><li>dbAdminAnyDatabase</li></ul></li><li>超级角色<ul><li>root</li></ul></li><li>内部角色<ul><li>__system</li></ul></li></ul><p>在你创建role的时候通过 <code>role: &quot;userAdminAnyDatabase&quot;</code> 来指定<br>这里以创建<code>userAdminAnyDatabase</code>为例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt; use admin</span><br><span class="line">switched to db admin</span><br><span class="line">&gt; db.createUser(</span><br><span class="line">... &#123;</span><br><span class="line">...   user: &quot;your name&quot;,</span><br><span class="line">...   pwd: &quot;your password&quot;,</span><br><span class="line">...   roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]</span><br><span class="line">... &#125;</span><br><span class="line">... )</span><br><span class="line">Successfully added user: &#123;</span><br><span class="line">        &quot;user&quot; : &quot;*****&quot;,</span><br><span class="line">        &quot;roles&quot; : [</span><br><span class="line">                &#123;</span><br><span class="line">                        &quot;role&quot; : &quot;userAdminAnyDatabase&quot;,</span><br><span class="line">                        &quot;db&quot; : &quot;admin&quot;</span><br><span class="line">                &#125;</span><br><span class="line">        ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="强制要求密码登录"><a href="#强制要求密码登录" class="headerlink" title="强制要求密码登录"></a>强制要求密码登录</h3><p>vim 编辑 <code>/etc/mongod.conf</code>，添加以下内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">security:</span><br><span class="line">  authorization: enabled</span><br></pre></td></tr></table></figure><p>保存后重启<code>mongod</code>，之后必须先通过 <code>db.auth(&#39;your name&#39;,&#39;your password&#39;)</code> 验证成功。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h3&gt;&lt;p&gt;今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 &lt;code&gt;RECOVERY&lt;/code&gt; 的 &lt;code&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="Software" scheme="https://eyum.top/categories/Software/"/>
+    
+    
+      <category term="MongoDB" scheme="https://eyum.top/tags/MongoDB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Scrapy爬取的数据存入MongoDB</title>
+    <link href="https://eyum.top/2020/02/23/Scrapy%E7%88%AC%E5%8F%96%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5MongoDB/"/>
+    <id>https://eyum.top/2020/02/23/Scrapy爬取的数据存入MongoDB/</id>
+    <published>2020-02-23T04:54:24.000Z</published>
+    <updated>2020-02-26T14:51:46.720Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="有空写-￣▽￣”"><a href="#有空写-￣▽￣”" class="headerlink" title="有空写(￣▽￣”)"></a>有空写(￣▽￣”)</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;有空写-￣▽￣”&quot;&gt;&lt;a href=&quot;#有空写-￣▽￣”&quot; class=&quot;headerlink&quot; title=&quot;有空写(￣▽￣”)&quot;&gt;&lt;/a&gt;有空写(￣▽￣”)&lt;/h3&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="Software" scheme="https://eyum.top/categories/Software/"/>
+    
+    
+      <category term="MongoDB" scheme="https://eyum.top/tags/MongoDB/"/>
+    
+      <category term="Scrapy" scheme="https://eyum.top/tags/Scrapy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MongoDB</title>
+    <link href="https://eyum.top/2020/02/21/MongoDB/"/>
+    <id>https://eyum.top/2020/02/21/MongoDB/</id>
+    <published>2020-02-21T07:25:28.000Z</published>
+    <updated>2020-02-26T14:51:02.360Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>需求：将scrapy爬取的数据存入MongoDB，整理一下常用的命令，参考<a href="https://www.runoob.com/mongodb/mongodb-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a>。</p></blockquote><h3 id="MongoDB简介"><a href="#MongoDB简介" class="headerlink" title="MongoDB简介"></a>MongoDB简介</h3><p>MongoDB 是由C++语言编写的，是一个基于分布式文件存储的开源数据库系统。<br>在高负载的情况下，添加更多的节点，可以保证服务器性能。<br>MongoDB 旨在为WEB应用提供可扩展的高性能数据存储解决方案。<br>MongoDB 将数据存储为一个文档，数据结构由键值(key=&gt;value)对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。</p><h3 id="增（有空写-￣▽￣”-）"><a href="#增（有空写-￣▽￣”-）" class="headerlink" title="增（有空写(￣▽￣”)）"></a>增（有空写(￣▽￣”)）</h3><h3 id="删"><a href="#删" class="headerlink" title="删"></a>删</h3><h3 id="改"><a href="#改" class="headerlink" title="改"></a>改</h3><h3 id="查"><a href="#查" class="headerlink" title="查"></a>查</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;需求：将scrapy爬取的数据存入MongoDB，整理一下常用的命令，参考&lt;a href=&quot;https://www.runoob.com/mongodb/mongodb-tutorial.html&quot; target=&quot;_blank&quot; rel=&quot;noo
+      
+    
+    </summary>
+    
+    
+      <category term="Software" scheme="https://eyum.top/categories/Software/"/>
+    
+    
+      <category term="MongoDB" scheme="https://eyum.top/tags/MongoDB/"/>
+    
+  </entry>
   
   <entry>
     <title>ftp主动被动模式详解</title>

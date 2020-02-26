@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>MongoDB强制密码登录 | Zou Yi&#39;s Blog | 纵使困顿难行 亦当砥砺奋进</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="MongoDB">
+    <meta name="description" content="起因今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 RECOVERY 的 Collections，还贴心的留下了个Email：varsovie@tutanota.com 来寻求帮助，真好。=͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)">
+<meta name="keywords" content="MongoDB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MongoDB强制密码登录">
+<meta property="og:url" content="https://eyum.top/2020/02/26/MongoDB强制密码登录/index.html">
+<meta property="og:site_name" content="Zou Yi&#39;s Blog">
+<meta property="og:description" content="起因今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 RECOVERY 的 Collections，还贴心的留下了个Email：varsovie@tutanota.com 来寻求帮助，真好。=͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://eyum.top/2020/02/26/MongoDB强制密码登录/shell.png">
+<meta property="og:image" content="https://eyum.top/2020/02/26/MongoDB强制密码登录/navicat.png">
+<meta property="og:updated_time" content="2020-02-26T14:59:35.414Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MongoDB强制密码登录">
+<meta name="twitter:description" content="起因今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 RECOVERY 的 Collections，还贴心的留下了个Email：varsovie@tutanota.com 来寻求帮助，真好。=͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)">
+<meta name="twitter:image" content="https://eyum.top/2020/02/26/MongoDB强制密码登录/shell.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Zou Yi&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">邹毅</h5>
+          <a href="mailto:zouyi9807@icloud.com" title="zouyi9807@icloud.com" class="mail">zouyi9807@icloud.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Homepage
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/zouyi9807" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/u/6196849878?topnav=1&wvr=6&topsug=1&is_all=1" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/friends"  >
+                <i class="icon icon-lg icon-link"></i>
+                友链
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">MongoDB强制密码登录</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">MongoDB强制密码登录</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-02-26T12:23:45.000Z" itemprop="datePublished" class="page-time">
+  2020-02-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Software/">Software</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#起因"><span class="post-toc-number">1.</span> <span class="post-toc-text">起因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建相应的管理员账户"><span class="post-toc-number">2.</span> <span class="post-toc-text">创建相应的管理员账户</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#强制要求密码登录"><span class="post-toc-number">3.</span> <span class="post-toc-text">强制要求密码登录</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-MongoDB强制密码登录"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">MongoDB强制密码登录</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-02-26 20:23:45" datetime="2020-02-26T12:23:45.000Z"  itemprop="datePublished">2020-02-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Software/">Software</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 <code>RECOVERY</code> 的 <code>Collections</code>，还贴心的留下了个Email：<a href="mailto:varsovie@tutanota.com" target="_blank" rel="noopener">varsovie@tutanota.com</a> 来寻求帮助，真好。<br>=͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)  </p>
+<p><img src="shell.png" alt="shell">  </p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="navicat.png" alt="navicat" title>
+                </div>
+                <div class="image-caption">navicat</div>
+            </figure>  
+
+<p>搜了一下这个邮箱，还真有不少，找了一篇相似的：<a href="https://juejin.im/post/5dd2c632e51d453fe773f0b4" target="_blank" rel="noopener">【掘金】</a><br>原因是MongoDB默认直接连接，无须身份认证，而对方很可能仅仅是尝试各个IP的27017端口<br>还好我数据库内没什么非常重要的文件，不过这次也给我提了个醒</p>
+<ul>
+<li>尽量不要用默认端口（MongoDB为27017）</li>
+<li>必要的话限制IP登录（<code>/etc/mongod.conf</code> 文件内 <code>bindIp</code>）</li>
+<li>创建相应的管理员账户</li>
+<li>强制要求密码登录</li>
+<li>养成定时备份的习惯</li>
+</ul>
+<h3 id="创建相应的管理员账户"><a href="#创建相应的管理员账户" class="headerlink" title="创建相应的管理员账户"></a>创建相应的管理员账户</h3><p>MongoDB中拥有不同权限的账号，具体可以查看：<a href="https://docs.mongodb.com/manual/reference/built-in-roles/" target="_blank" rel="noopener">【官方文档】</a><br>其中常用的如下：</p>
+<ul>
+<li>数据库普通用户角色<ul>
+<li>read</li>
+<li>readWrite</li>
+</ul>
+</li>
+<li>数据库管理员角色<ul>
+<li>dbAdmin</li>
+<li>dbOwner</li>
+<li>userAdmin</li>
+</ul>
+</li>
+<li>集群管理角色<ul>
+<li>clusterAdmin</li>
+<li>clusterManager</li>
+<li>clusterMonitor</li>
+<li>hostManager</li>
+</ul>
+</li>
+<li>备份与还原角色<ul>
+<li>backup</li>
+<li>restore</li>
+</ul>
+</li>
+<li>所有数据库角色（对所有数据库有效）<ul>
+<li>readAnyDatabase</li>
+<li>readWriteAnyDatabase</li>
+<li>userAdminAnyDatabase</li>
+<li>dbAdminAnyDatabase</li>
+</ul>
+</li>
+<li>超级角色<ul>
+<li>root</li>
+</ul>
+</li>
+<li>内部角色<ul>
+<li>__system</li>
+</ul>
+</li>
+</ul>
+<p>在你创建role的时候通过 <code>role: &quot;userAdminAnyDatabase&quot;</code> 来指定<br>这里以创建<code>userAdminAnyDatabase</code>为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt; use admin</span><br><span class="line">switched to db admin</span><br><span class="line">&gt; db.createUser(</span><br><span class="line">... &#123;</span><br><span class="line">...   user: &quot;your name&quot;,</span><br><span class="line">...   pwd: &quot;your password&quot;,</span><br><span class="line">...   roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]</span><br><span class="line">... &#125;</span><br><span class="line">... )</span><br><span class="line">Successfully added user: &#123;</span><br><span class="line">        &quot;user&quot; : &quot;*****&quot;,</span><br><span class="line">        &quot;roles&quot; : [</span><br><span class="line">                &#123;</span><br><span class="line">                        &quot;role&quot; : &quot;userAdminAnyDatabase&quot;,</span><br><span class="line">                        &quot;db&quot; : &quot;admin&quot;</span><br><span class="line">                &#125;</span><br><span class="line">        ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="强制要求密码登录"><a href="#强制要求密码登录" class="headerlink" title="强制要求密码登录"></a>强制要求密码登录</h3><p>vim 编辑 <code>/etc/mongod.conf</code>，添加以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">security:</span><br><span class="line">  authorization: enabled</span><br></pre></td></tr></table></figure>
+
+<p>保存后重启<code>mongod</code>，之后必须先通过 <code>db.auth(&#39;your name&#39;,&#39;your password&#39;)</code> 验证成功。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2020-02-26T14:59:35.414Z" itemprop="dateUpdated">2020-02-26 22:59:35</time>
+</span><br>
+
+
+        
+        原文链接：<a href="/2020/02/26/MongoDB强制密码登录/" target="_blank" rel="external">https://eyum.top/2020/02/26/MongoDB强制密码登录/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://eyum.top">
+            <img src="/img/avatar.png" alt="邹毅">
+            邹毅
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MongoDB/">MongoDB</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://eyum.top/2020/02/26/MongoDB强制密码登录/&title=《MongoDB强制密码登录》 — Zou Yi's Blog&pic=https://eyum.top/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://eyum.top/2020/02/26/MongoDB强制密码登录/&title=《MongoDB强制密码登录》 — Zou Yi's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://eyum.top/2020/02/26/MongoDB强制密码登录/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MongoDB强制密码登录》 — Zou Yi's Blog&url=https://eyum.top/2020/02/26/MongoDB强制密码登录/&via=https://eyum.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://eyum.top/2020/02/26/MongoDB强制密码登录/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/02/23/Scrapy爬取的数据存入MongoDB/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Scrapy爬取的数据存入MongoDB</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+        var id = location.pathname
+        if (location.pathname.length > 50) {
+          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
+        }
+        const gitalk = new Gitalk({
+          clientID: '8cd76d537206a04d72bb',
+          clientSecret: '24d805d9a78405f51747c05aa52427ef2671ac14',
+          repo: 'comment',
+          owner: 'zouyi9807',
+          admin: ['zouyi9807'],
+          id: id,      // Ensure uniqueness and length less than 50
+          title: document.title.split('|')[0],
+          distractionFreeMode: false  // Facebook-like distraction free mode
+        })
+
+        gitalk.render('gitalk-container')
+    </script>
+</section>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>邹毅 &copy; 2015 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">苏ICP备19056695</a><br>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://eyum.top/2020/02/26/MongoDB强制密码登录/&title=《MongoDB强制密码登录》 — Zou Yi's Blog&pic=https://eyum.top/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://eyum.top/2020/02/26/MongoDB强制密码登录/&title=《MongoDB强制密码登录》 — Zou Yi's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://eyum.top/2020/02/26/MongoDB强制密码登录/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《MongoDB强制密码登录》 — Zou Yi's Blog&url=https://eyum.top/2020/02/26/MongoDB强制密码登录/&via=https://eyum.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://eyum.top/2020/02/26/MongoDB强制密码登录/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMklEQVR42u3azXKDMAxF4bz/S6fbdlLMuZKzQD6smCQGPjqj6sevFz7eF8f6l78/+fwNWbv5kCFDxmMZ7+WxvgG5Mb/+1Tl6iTJkyDiAcXX79fl6VfooJFhffi5DhgwZm6g8iMuQIUPGLka6iiSFMmTIkNEpYgmep4z8RWyuxWXIkPFARieMfvv8K/MNGTJkPIrxDo+rVWmjrRZeL68mQ4aM0Qwe4MgGizQd7ARcGTJknMMgwZRvv+DUtDy+advJkCFjNGOdxu36liSU/DXF4wEZMmSMZqQPnQ4m04C+ofUmQ4aMhzN46Ky1yTqJYDwKlSFDxjhGGjr7zbja4CH4C8iQIWMQgy/uJHYpj4faP11DGTJkHMAgTfw0jKbjSf5f4p/5hgwZMkYzai028kAkcMfh9fNbGTJkjGZ00j5eS/aL4WB4KUOGjHGMThmZlqm83I2LXhkyZIxm8KK0kwLyQrc42ZAhQ8YBDJ6KpQ9dSzf55ow4QZQhQ8bDGemRAnYNA26SQhkyZBzJIAGxk9LV7lKccsiQIWMEgyd2fACQbjIja28CrgwZMoYyOqPEWsBNV6GAK0OGjHGMTuFaC9C8oRZs15AhQ8ZoRlpq1h6xv0Uj2GwhQ4aMoYzaAIAUmbtCNhonyJAh4wBGOjKstcaC9lk68pQhQ4YM3Hrjo8r+Rg0ZMmTI4Nsg+LCzBkNhWoYMGQcwOpsqOjzSmEPXkSFDxmhGmnfVilW+eSJ9QTJkyBjN+AG0KAPxYRQMnQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'Zou Yi\'s Blog';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)Welcome!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
