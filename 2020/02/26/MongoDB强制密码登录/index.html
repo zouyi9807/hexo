@@ -21,21 +21,20 @@
     
     
     <meta name="keywords" content="MongoDB">
-    <meta name="description" content="起因今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 RECOVERY 的 Collections，还贴心的留下了个Email：varsovie@tutanota.com 来寻求帮助，真好。=͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)">
+    <meta name="description" content="起因今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 RECOVERY 的 Collections，还贴心的留下了个Email：varsovie@tutanota.com 来寻求帮助，真好。 =͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)">
 <meta name="keywords" content="MongoDB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MongoDB强制密码登录">
 <meta property="og:url" content="https://eyum.top/2020/02/26/MongoDB强制密码登录/index.html">
 <meta property="og:site_name" content="Zou Yi&#39;s Blog">
-<meta property="og:description" content="起因今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 RECOVERY 的 Collections，还贴心的留下了个Email：varsovie@tutanota.com 来寻求帮助，真好。=͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)">
+<meta property="og:description" content="起因今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 RECOVERY 的 Collections，还贴心的留下了个Email：varsovie@tutanota.com 来寻求帮助，真好。 =͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://eyum.top/2020/02/26/MongoDB强制密码登录/shell.png">
-<meta property="og:image" content="https://eyum.top/2020/02/26/MongoDB强制密码登录/navicat.png">
-<meta property="og:updated_time" content="2020-02-26T14:59:35.414Z">
+<meta property="og:image" content="https://eyum.top/img/navicat.png">
+<meta property="og:updated_time" content="2020-07-06T15:54:51.202Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB强制密码登录">
-<meta name="twitter:description" content="起因今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 RECOVERY 的 Collections，还贴心的留下了个Email：varsovie@tutanota.com 来寻求帮助，真好。=͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)">
-<meta name="twitter:image" content="https://eyum.top/2020/02/26/MongoDB强制密码登录/shell.png">
+<meta name="twitter:description" content="起因今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 RECOVERY 的 Collections，还贴心的留下了个Email：varsovie@tutanota.com 来寻求帮助，真好。 =͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)">
+<meta name="twitter:image" content="https://eyum.top/img/navicat.png">
     
         <link rel="alternate" type="application/atom+xml" title="Zou Yi&#39;s Blog" href="/atom.xml">
     
@@ -177,7 +176,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#起因"><span class="post-toc-number">1.</span> <span class="post-toc-text">起因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建相应的管理员账户"><span class="post-toc-number">2.</span> <span class="post-toc-text">创建相应的管理员账户</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#强制要求密码登录"><span class="post-toc-number">3.</span> <span class="post-toc-text">强制要求密码登录</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#起因"><span class="post-toc-number">1.</span> <span class="post-toc-text">起因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建相应的管理员账户"><span class="post-toc-number">2.</span> <span class="post-toc-text">创建相应的管理员账户</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#强制要求密码登录"><span class="post-toc-number">3.</span> <span class="post-toc-text">强制要求密码登录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下次新建数据库的时候"><span class="post-toc-number">4.</span> <span class="post-toc-text">下次新建数据库的时候</span></a></li></ol>
         </nav>
     </aside>
 
@@ -203,17 +202,13 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 <code>RECOVERY</code> 的 <code>Collections</code>，还贴心的留下了个Email：<a href="mailto:varsovie@tutanota.com" target="_blank" rel="noopener">varsovie@tutanota.com</a> 来寻求帮助，真好。<br>=͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)  </p>
-<p><img src="shell.png" alt="shell">  </p>
-<figure class="image-bubble">
+            <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 <code>RECOVERY</code> 的 <code>Collections</code>，还贴心的留下了个Email：<a href="mailto:varsovie@tutanota.com" target="_blank" rel="noopener">varsovie@tutanota.com</a> 来寻求帮助，真好。 =͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="navicat.png" alt="navicat" title>
+                    <img src="/img/navicat.png" alt="shell](img/shell.png)![navicat" title>
                 </div>
-                <div class="image-caption">navicat</div>
-            </figure>  
-
-<p>搜了一下这个邮箱，还真有不少，找了一篇相似的：<a href="https://juejin.im/post/5dd2c632e51d453fe773f0b4" target="_blank" rel="noopener">【掘金】</a><br>原因是MongoDB默认直接连接，无须身份认证，而对方很可能仅仅是尝试各个IP的27017端口<br>还好我数据库内没什么非常重要的文件，不过这次也给我提了个醒</p>
+                <div class="image-caption">shell](img/shell.png)![navicat</div>
+            </figure><br>搜了一下这个邮箱，还真有不少，找了一篇相似的：<a href="https://juejin.im/post/5dd2c632e51d453fe773f0b4" target="_blank" rel="noopener">【掘金】</a><br>原因是MongoDB默认直接连接，无须身份认证，而对方很可能仅仅是尝试各个IP的27017端口<br>还好我数据库内没什么非常重要的文件，不过这次也给我提了个醒</p>
 <ul>
 <li>尽量不要用默认端口（MongoDB为27017）</li>
 <li>必要的话限制IP登录（<code>/etc/mongod.conf</code> 文件内 <code>bindIp</code>）</li>
@@ -262,13 +257,20 @@
 </ul>
 </li>
 </ul>
+<p>roles是分配用户角色的地方，主要有<br>Read：允许用户读取指定数据库<br>readWrite：允许用户读写指定数据库<br>dbAdmin：允许用户在指定数据库中执行管理函数，如索引创建、删除，查看统计或访问system.profile<br>userAdmin：允许用户向system.users集合写入，可以找指定数据库里创建、删除和管理用户<br>clusterAdmin：只在admin数据库中可用，赋予用户所有分片和复制集相关函数的管理权限。<br>readAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读权限<br>readWriteAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的读写权限<br>userAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的userAdmin权限<br>dbAdminAnyDatabase：只在admin数据库中可用，赋予用户所有数据库的dbAdmin权限。<br>root：只在admin数据库中可用。超级账号，超级权限</p>
 <p>在你创建role的时候通过 <code>role: &quot;userAdminAnyDatabase&quot;</code> 来指定<br>这里以创建<code>userAdminAnyDatabase</code>为例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt; use admin</span><br><span class="line">switched to db admin</span><br><span class="line">&gt; db.createUser(</span><br><span class="line">... &#123;</span><br><span class="line">...   user: &quot;your name&quot;,</span><br><span class="line">...   pwd: &quot;your password&quot;,</span><br><span class="line">...   roles: [ &#123; role: &quot;userAdminAnyDatabase&quot;, db: &quot;admin&quot; &#125; ]</span><br><span class="line">... &#125;</span><br><span class="line">... )</span><br><span class="line">Successfully added user: &#123;</span><br><span class="line">        &quot;user&quot; : &quot;*****&quot;,</span><br><span class="line">        &quot;roles&quot; : [</span><br><span class="line">                &#123;</span><br><span class="line">                        &quot;role&quot; : &quot;userAdminAnyDatabase&quot;,</span><br><span class="line">                        &quot;db&quot; : &quot;admin&quot;</span><br><span class="line">                &#125;</span><br><span class="line">        ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>创建成功后可以通过以下命令查看所有用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; use admin</span><br><span class="line">switched to db admin</span><br><span class="line">&gt; db.system.users.find()</span><br></pre></td></tr></table></figure>
+
+<p>另外，删除某个用户则为：<code>&gt; db.system.users.remove({user:&quot;xxx&quot;})</code></p>
 <h3 id="强制要求密码登录"><a href="#强制要求密码登录" class="headerlink" title="强制要求密码登录"></a>强制要求密码登录</h3><p>vim 编辑 <code>/etc/mongod.conf</code>，添加以下内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">security:</span><br><span class="line">  authorization: enabled</span><br></pre></td></tr></table></figure>
 
 <p>保存后重启<code>mongod</code>，之后必须先通过 <code>db.auth(&#39;your name&#39;,&#39;your password&#39;)</code> 验证成功。</p>
+<h3 id="下次新建数据库的时候"><a href="#下次新建数据库的时候" class="headerlink" title="下次新建数据库的时候"></a>下次新建数据库的时候</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&gt; use admin</span><br><span class="line">switched to db admin</span><br><span class="line">&gt; db.auth(&quot;xxx&quot;,&quot;xxx&quot;) # userAdminAnyDatabase 权限的用户</span><br><span class="line">1</span><br><span class="line"></span><br><span class="line">&gt; use newdb</span><br><span class="line">switched to db newdb</span><br><span class="line">&gt; db.createUser(</span><br><span class="line">...   &#123;</span><br><span class="line">...     user: &quot;your name&quot;,</span><br><span class="line">...     pwd: &quot;your password&quot;,</span><br><span class="line">...     roles: [ &#123; role: &quot;readWrite&quot;, db: &quot;newdb&quot; &#125; ]</span><br><span class="line">...   &#125;</span><br><span class="line">... )</span><br><span class="line">Successfully added user: &#123;</span><br><span class="line">        &quot;user&quot; : &quot;***&quot;,</span><br><span class="line">        &quot;roles&quot; : [</span><br><span class="line">                &#123;</span><br><span class="line">                        &quot;role&quot; : &quot;readWrite&quot;,</span><br><span class="line">                        &quot;db&quot; : &quot;***&quot;</span><br><span class="line">                &#125;</span><br><span class="line">        ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         </div>
 
@@ -277,7 +279,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-02-26T14:59:35.414Z" itemprop="dateUpdated">2020-02-26 22:59:35</time>
+    Last updated: <time datetime="2020-07-06T15:54:51.202Z" itemprop="dateUpdated">2020-07-06 23:54:51</time>
 </span><br>
 
 
@@ -354,7 +356,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/02/28/Django使用分页器/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Django使用分页器</h4>
+      </a>
+    </div>
   
 
   

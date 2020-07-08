@@ -2,16 +2,100 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://eyum.top/2020/02/26/MongoDB%E5%BC%BA%E5%88%B6%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/</loc>
+    <loc>https://eyum.top/2020/02/28/MongoEngine%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     
-    <lastmod>2020-02-26T14:59:35.414Z</lastmod>
+    <lastmod>2020-07-08T09:00:50.876Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://eyum.top/2020/02/28/Django%E4%BD%BF%E7%94%A8%E5%88%86%E9%A1%B5%E5%99%A8/</loc>
+    
+    <lastmod>2020-07-07T15:13:46.357Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://eyum.top/2020/02/23/Scrapy%E7%88%AC%E5%8F%96%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5MongoDB/</loc>
     
-    <lastmod>2020-02-26T14:51:46.720Z</lastmod>
+    <lastmod>2020-07-07T09:29:17.905Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://eyum.top/2020/02/26/MongoDB%E5%BC%BA%E5%88%B6%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95/</loc>
+    
+    <lastmod>2020-07-06T15:54:51.202Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://eyum.top/2020/04/23/%E5%8E%BB%E9%99%A4kindle%E7%94%B5%E5%AD%90%E4%B9%A6DRM%E9%94%81/</loc>
+    
+    <lastmod>2020-04-23T14:29:00.407Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://eyum.top/2020/04/08/pytorch-%E8%87%AA%E5%AE%9A%E4%B9%89Dataset/</loc>
+    
+    <lastmod>2020-04-08T11:44:29.422Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://eyum.top/2020/04/05/TensorFlow%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BC%98%E5%8C%96%E5%99%A8/</loc>
+    
+    <lastmod>2020-04-05T00:55:59.155Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://eyum.top/2020/04/03/Tensorflow-Optimizer-%E6%A2%AF%E5%BA%A6%E4%BF%AE%E6%AD%A3/</loc>
+    
+    <lastmod>2020-04-03T12:18:20.548Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://eyum.top/2020/03/28/Tensorflow-%E4%BC%98%E5%8C%96%E5%99%A8%E8%AF%A6%E8%A7%A3/</loc>
+    
+    <lastmod>2020-03-28T09:50:42.090Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://eyum.top/2020/03/26/Precision%E3%80%81Recall/</loc>
+    
+    <lastmod>2020-03-26T02:33:00.133Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://eyum.top/2020/03/08/ChromeOS-%E6%8F%90%E5%8D%87JetBrains%E7%B3%BB%E5%88%97%E6%B5%81%E7%95%85%E5%BA%A6/</loc>
+    
+    <lastmod>2020-03-08T11:55:27.930Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://eyum.top/2020/03/03/Django-%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/</loc>
+    
+    <lastmod>2020-03-03T08:59:11.915Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://eyum.top/2020/03/03/Django-POST-403-Forbidden/</loc>
+    
+    <lastmod>2020-03-03T08:58:31.251Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://eyum.top/2020/03/02/Django%E4%B8%ADframe%E6%A0%87%E7%AD%BE%E6%8B%92%E7%BB%9D%E8%BF%9E%E6%8E%A5%E8%AF%B7%E6%B1%82/</loc>
+    
+    <lastmod>2020-03-02T11:31:54.947Z</lastmod>
     
   </url>
   
@@ -93,14 +177,14 @@
   </url>
   
   <url>
-    <loc>https://eyum.top/categories/index.html</loc>
+    <loc>https://eyum.top/tags/index.html</loc>
     
     <lastmod>2019-09-23T12:44:22.492Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://eyum.top/tags/index.html</loc>
+    <loc>https://eyum.top/categories/index.html</loc>
     
     <lastmod>2019-09-23T12:44:22.492Z</lastmod>
     
