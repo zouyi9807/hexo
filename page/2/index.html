@@ -240,7 +240,7 @@ setting.py1234567891011# 指明要连接的数据库mongo_con = mongoengine.conn
 
     
         使用默认的分页器数据库内存的数据较多，读取的时候一页太长，因此需要使用分页器进行分页，在 Django 的 views 内声明。
-123456789101112131415161718192021222324252627from django.core.paginator import Paginator, PageNotAnInteger, EmptyPagefrom django.sho...
+views.py123456789101112131415161718192021222324252627from django.core.paginator import Paginator, PageNotAnInteger, EmptyPagefrom dj...
     
 
         <a href="/2020/02/28/Django使用分页器/" class="post-more waves-effect waves-button">
@@ -288,10 +288,11 @@ setting.py1234567891011# 指明要连接的数据库mongo_con = mongoengine.conn
 
     
         起因今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 RECOVERY 的 Collections，还贴心的留下了个Email：varsovie@tutanota.com 来寻求帮助，真好。 =͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)
+
                 
                     
                     
-     ...
+    ...
     
 
         <a href="/2020/02/26/MongoDB强制密码登录/" class="post-more waves-effect waves-button">
@@ -344,7 +345,7 @@ pymongo
 MongoDB
 
 通过 pymongo 库连接 MongoDB在这里，需要用到的是 pymongo 库里面的 MongoClient，向该方法传入 MongoDB 的 IP 及 端口。
-123client = pymongo.MongoClient(&apos;mongodb://your ip address:27017/&apos;)# 或者cli...
+123client = pymongo.MongoClient('mongodb://your ip address:27017/')# 或者client = pymo...
     
 
         <a href="/2020/02/23/Scrapy爬取的数据存入MongoDB/" class="post-more waves-effect waves-button">

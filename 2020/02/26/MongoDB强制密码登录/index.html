@@ -29,12 +29,13 @@
 <meta property="og:site_name" content="Zou Yi&#39;s Blog">
 <meta property="og:description" content="起因今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 RECOVERY 的 Collections，还贴心的留下了个Email：varsovie@tutanota.com 来寻求帮助，真好。 =͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://eyum.top/img/navicat.png">
-<meta property="og:updated_time" content="2020-07-06T15:54:51.202Z">
+<meta property="og:image" content="https://eyum.top/2020/02/26/MongoDB强制密码登录/shell.png">
+<meta property="og:image" content="https://eyum.top/2020/02/26/MongoDB强制密码登录/navicat.png">
+<meta property="og:updated_time" content="2020-07-08T09:47:30.504Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MongoDB强制密码登录">
 <meta name="twitter:description" content="起因今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 RECOVERY 的 Collections，还贴心的留下了个Email：varsovie@tutanota.com 来寻求帮助，真好。 =͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)">
-<meta name="twitter:image" content="https://eyum.top/img/navicat.png">
+<meta name="twitter:image" content="https://eyum.top/2020/02/26/MongoDB强制密码登录/shell.png">
     
         <link rel="alternate" type="application/atom+xml" title="Zou Yi&#39;s Blog" href="/atom.xml">
     
@@ -202,13 +203,22 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 <code>RECOVERY</code> 的 <code>Collections</code>，还贴心的留下了个Email：<a href="mailto:varsovie@tutanota.com" target="_blank" rel="noopener">varsovie@tutanota.com</a> 来寻求帮助，真好。 =͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)<figure class="image-bubble">
+            <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>今天一看突然发现网站上的数据都没了，一看数据库，里面的表全没了，然后多了一张叫 <code>RECOVERY</code> 的 <code>Collections</code>，还贴心的留下了个Email：<a href="mailto:varsovie@tutanota.com" target="_blank" rel="noopener">varsovie@tutanota.com</a> 来寻求帮助，真好。 =͟͟͞͞=͟͟͞͞(●⁰ꈊ⁰● |||)</p>
+<figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="/img/navicat.png" alt="shell](img/shell.png)![navicat" title>
+                    <img src="shell.png" alt="shell" title>
                 </div>
-                <div class="image-caption">shell](img/shell.png)![navicat</div>
-            </figure><br>搜了一下这个邮箱，还真有不少，找了一篇相似的：<a href="https://juejin.im/post/5dd2c632e51d453fe773f0b4" target="_blank" rel="noopener">【掘金】</a><br>原因是MongoDB默认直接连接，无须身份认证，而对方很可能仅仅是尝试各个IP的27017端口<br>还好我数据库内没什么非常重要的文件，不过这次也给我提了个醒</p>
+                <div class="image-caption">shell</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="navicat.png" alt="navicat" title>
+                </div>
+                <div class="image-caption">navicat</div>
+            </figure>
+<p>搜了一下这个邮箱，还真有不少，找了一篇相似的：<a href="https://juejin.im/post/5dd2c632e51d453fe773f0b4" target="_blank" rel="noopener">【掘金】</a><br>原因是MongoDB默认直接连接，无须身份认证，而对方很可能仅仅是尝试各个IP的27017端口<br>还好我数据库内没什么非常重要的文件，不过这次也给我提了个醒</p>
 <ul>
 <li>尽量不要用默认端口（MongoDB为27017）</li>
 <li>必要的话限制IP登录（<code>/etc/mongod.conf</code> 文件内 <code>bindIp</code>）</li>
@@ -279,7 +289,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2020-07-06T15:54:51.202Z" itemprop="dateUpdated">2020-07-06 23:54:51</time>
+    Last updated: <time datetime="2020-07-08T09:47:30.504Z" itemprop="dateUpdated">2020-07-08 17:47:30</time>
 </span><br>
 
 
