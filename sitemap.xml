@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://eyum.top/2020/03/03/Django-POST-403-Forbidden/</loc>
+    
+    <lastmod>2020-07-14T11:26:48.838Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://eyum.top/2020/04/23/%E5%8E%BB%E9%99%A4kindle%E7%94%B5%E5%AD%90%E4%B9%A6DRM%E9%94%81/</loc>
     
     <lastmod>2020-07-08T15:11:05.257Z</lastmod>
@@ -100,13 +107,6 @@
   </url>
   
   <url>
-    <loc>https://eyum.top/2020/03/03/Django-POST-403-Forbidden/</loc>
-    
-    <lastmod>2020-03-03T08:58:31.251Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://eyum.top/2020/02/21/MongoDB/</loc>
     
     <lastmod>2020-02-26T14:51:02.360Z</lastmod>
@@ -170,14 +170,14 @@
   </url>
   
   <url>
-    <loc>https://eyum.top/categories/index.html</loc>
+    <loc>https://eyum.top/tags/index.html</loc>
     
     <lastmod>2019-09-23T12:44:22.492Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://eyum.top/tags/index.html</loc>
+    <loc>https://eyum.top/categories/index.html</loc>
     
     <lastmod>2019-09-23T12:44:22.492Z</lastmod>
     

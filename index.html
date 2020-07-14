@@ -510,6 +510,8 @@ f12 调试，看到一下报错。
         <time class="post-time" title="2020-03-03 16:58:31" datetime="2020-03-03T08:58:31.000Z"  itemprop="datePublished">2020-03-03</time>
 
         
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Software/">Software</a></li></ul>
+
 
 
     </div>
@@ -529,12 +531,27 @@ f12 调试，看到一下报错。
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        
+        原因我这边定义了一个表单，向后台提交数据，提交方式为 POST，程序出现以下问题：
+
+                
+                    
+                    
+                
+                
+            
+
+出现原因出现这个报错的原因主要是跨站请求伪造。Django 框架为我们提供了一个中间件，用于处...
     
 
         <a href="/2020/03/03/Django-POST-403-Forbidden/" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Django/">Django</a></li></ul>
+
     </div>
     
 </article>
