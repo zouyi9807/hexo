@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://eyum.top/"/>
-  <updated>2020-07-15T01:40:46.458Z</updated>
+  <updated>2020-12-07T15:14:01.579Z</updated>
   <id>https://eyum.top/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>404</title>
+    <link href="https://eyum.top/2020/12/07//404/"/>
+    <id>https://eyum.top/2020/12/07//404/</id>
+    <published>2020-12-07T15:12:07.113Z</published>
+    <updated>2020-12-07T15:14:01.579Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>去除kindle电子书DRM锁</title>
@@ -525,30 +540,6 @@
     
     
       <category term="Linux" scheme="https://eyum.top/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android-action</title>
-    <link href="https://eyum.top/2019/10/16/Android-action/"/>
-    <id>https://eyum.top/2019/10/16/Android-action/</id>
-    <published>2019-10-16T14:40:39.000Z</published>
-    <updated>2020-07-08T09:11:30.372Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="编写一个MainActivity和MyService，在MainActivity中的onCreate-函数中为两个按钮分别设置点击事件监听器，点击第一个按钮启动服务弹出一个Toast显示“您点击了第一个按钮”，点击第二个按钮启动服务弹出一个Toast显示“您点击了第二个按钮”。（以action区分不同的动作）"><a href="#编写一个MainActivity和MyService，在MainActivity中的onCreate-函数中为两个按钮分别设置点击事件监听器，点击第一个按钮启动服务弹出一个Toast显示“您点击了第一个按钮”，点击第二个按钮启动服务弹出一个Toast显示“您点击了第二个按钮”。（以action区分不同的动作）" class="headerlink" title="编写一个MainActivity和MyService，在MainActivity中的onCreate()函数中为两个按钮分别设置点击事件监听器，点击第一个按钮启动服务弹出一个Toast显示“您点击了第一个按钮”，点击第二个按钮启动服务弹出一个Toast显示“您点击了第二个按钮”。（以action区分不同的动作）"></a>编写一个MainActivity和MyService，在MainActivity中的onCreate()函数中为两个按钮分别设置点击事件监听器，点击第一个按钮启动服务弹出一个Toast显示“您点击了第一个按钮”，点击第二个按钮启动服务弹出一个Toast显示“您点击了第二个按钮”。（以action区分不同的动作）</h4><ul><li><p>MainActivity.java</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        <span class="keyword">final</span> Button button1 = findViewById(R.id.button1);</span><br><span class="line">        Button button2 = findViewById(R.id.button2);</span><br><span class="line">        button1.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                Intent intent = <span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, MyService.class);</span><br><span class="line">                intent.setAction(<span class="string">"ACTION_BUTTON_1"</span>);</span><br><span class="line">                startService(intent);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        button2.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                Intent intent = <span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, MyService.class);</span><br><span class="line">                intent.setAction(<span class="string">"ACTION_BUTTON_2"</span>);</span><br><span class="line">                startService(intent);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>MyService.java</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException(<span class="string">"Not yet implemented"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span><span class="params">(Intent intent, <span class="keyword">int</span> flags, <span class="keyword">int</span> startId)</span> </span>&#123;</span><br><span class="line">        String intentAction = intent.getAction();</span><br><span class="line">        <span class="keyword">if</span> (intentAction.equals(<span class="string">"ACTION_BUTTON_1"</span>)) &#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"您点击了第一个按钮"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (intentAction.equals(<span class="string">"ACTION_BUTTON_2"</span>)) &#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>, <span class="string">"您点击了第二个按钮"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onStartCommand(intent, flags, startId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;编写一个MainActivity和MyService，在MainActivity中的onCreate-函数中为两个按钮分别设置点击事件监听器，点击第一个按钮启动服务弹出一个Toast显示“您点击了第一个按钮”，点击第二个按钮启动服务弹出一个Toast显示“您点击了
-      
-    
-    </summary>
-    
-    
-    
-      <category term="Android" scheme="https://eyum.top/tags/Android/"/>
     
   </entry>
   
