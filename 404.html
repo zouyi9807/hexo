@@ -21,14 +21,17 @@
     
     
     <meta name="keywords" content>
-    <meta property="og:type" content="website">
+    <meta name="description" content="#game {             width: 100%;             margin-top: 32px;             text-align: center;         }          #msg {             width: 100%;             text-align: center;">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Zou Yi&#39;s Blog">
 <meta property="og:url" content="https://eyum.top/404.html">
 <meta property="og:site_name" content="Zou Yi&#39;s Blog">
+<meta property="og:description" content="#game {             width: 100%;             margin-top: 32px;             text-align: center;         }          #msg {             width: 100%;             text-align: center;">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-12-07T14:42:17.943Z">
+<meta property="og:updated_time" content="2020-12-08T03:45:24.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zou Yi&#39;s Blog">
+<meta name="twitter:description" content="#game {             width: 100%;             margin-top: 32px;             text-align: center;         }          #msg {             width: 100%;             text-align: center;">
     
         <link rel="alternate" type="application/atom+xml" title="Zou Yi&#39;s Blog" href="/atom.xml">
     
@@ -160,19 +163,77 @@
 <div class="container body-wrap">
     <article class="page-article fade" itemprop="blogPage">
         <div class="post-content page-content" id="page-content" itemprop="pageContent">
-            <!DOCTYPE HTML>
+            <!DOCTYPE html>
 <html>
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta http-equiv="content-type" content="text/html;charset=utf-8;">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="robots" content="all">
-  <meta name="robots" content="index,follow">
+    <meta charset="UTF-8">
+    <style>
+        #game {
+            width: 100%;
+            margin-top: 32px;
+            text-align: center;
+        }
+
+        #msg {
+            width: 100%;
+            text-align: center;
+            font-size: 70px;
+            font-family: PingFang SC, Helvetica Neue, Hiragino Sans GB, Segoe UI, Microsoft YaHei, sans-serif;
+            font-weight: bold;
+            color: #4f565f;
+        }
+
+        .have_rest {
+            height: 41px;
+            background: url("/images/have_rest.png") center no-repeat rgba(255, 255, 255, .8);
+        }
+
+        .main-inner {
+            margin-top: 60px;
+            padding: 60px 60px 60px 60px;
+            background: rgba(255, 255, 255, 1) !important;
+            min-height: 500px;
+            border-radius: 5px;
+        }
+        
+		@media screen and (max-width: 768px) {
+			canvas{
+            margin-left: -94px;
+			}
+		}
+    </style>
+    <script src="/js/src/catch-cat/catch-the-cat.min.js"></script>
 </head>
-<body>
 
-<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homepageurl="your site url " homepagename="回到我的主页"></script>
+<p style="text-align: center;font-size: 30px; font-weight: bold">404 Not Found</p>
+<div style="width: 320px;margin: 0 auto">
+    <p style="text-align: center;font-size: large">请试试以下办法：</p>
+    <ul>
+        <li><p style="font-size: medium">返回首页：<a href="https://chennq.com" target="_blank" rel="noopener">点击此处</a></p></li>
+        <li><p style="font-size: medium">我的Github：<a href="https://github.com/atlasnq" target="_blank" rel="noopener">atlasnq</a></p></li>
+    </ul>
+</div>
 
-</body>
+<div class="have_rest"></div>
+
+<div class="error-split" id="up">
+</div>
+
+<script src="/js/catch-cat/phaser.min.js"></script>
+<script src="/js/catch-cat/catch-the-cat.min.js"></script>
+<div id="game">
+
+</div>
+<script>window.game = new CatchTheCatGame({
+    w: 8,
+    h: 8,
+    r: 19,
+    backgroundColor: 16777215,
+    parent: "game",
+    statusBarAlign: "center",
+    credit: ""
+})</script>
+
 </html>
         </div>
 
@@ -240,49 +301,6 @@
 
 
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section class="comments" id="comments">
-    <div id="gitalk-container"></div>
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
-        var id = location.pathname
-        if (location.pathname.length > 50) {
-          id = location.pathname.replace(/\/\d+\/\d+\/\d+\//, '').replace('/', '').substring(0, 50)
-        }
-        const gitalk = new Gitalk({
-          clientID: '8cd76d537206a04d72bb',
-          clientSecret: '24d805d9a78405f51747c05aa52427ef2671ac14',
-          repo: 'comment',
-          owner: 'zouyi9807',
-          admin: ['zouyi9807'],
-          id: id,      // Ensure uniqueness and length less than 50
-          title: document.title.split('|')[0],
-          distractionFreeMode: false  // Facebook-like distraction free mode
-        })
-
-        gitalk.render('gitalk-container')
-    </script>
-</section>
-
-
-
 
     </article>
     
